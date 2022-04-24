@@ -8,3 +8,8 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <App />,
 );
+
+// const modal = ReactDOM.createRoot(document.getElementById('modal'));
+// modal.createPortal{
+
+// }
