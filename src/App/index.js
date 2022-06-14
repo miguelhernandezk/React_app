@@ -1,34 +1,39 @@
 import React from "react";
 import { AppUI } from "./AppUI";
 import { ToDoProvider } from "../ToDoContext"
-import { ToDoCounter } from "../ToDoCounter";
 
 // import './App.css';
 
 
 function App(){
+  const[state, setState] = React.useState("estado compartido");   
+
   return(
     <React.Fragment>
-      <ToDoHeader/>
-      <TodoList/>
+      <ToDoHeader>
+        <ToDoCounter/>
+        <ToDoSearch/>
+      </ToDoHeader>
+      <ToDoList>
+        <ToDoItem state = { state }/>
+      </ToDoList>
     </React.Fragment>
   );
 }
 
-function ToDoHeader(){
+function ToDoHeader({ children }){
   return(
-    <React.Fragment>
-      <ToDoCounter/>
-      <ToDoSearch/>
-    </React.Fragment>
+    <header>
+      { children }
+    </header>
   );
 }
 
-function ToDoList(){
+function ToDoList({ children }){
   return(
-    <React.Fragment>
-      <ToDoItems/>
-    </React.Fragment>
+    <section className="ToDoList-container">
+      { children }
+    </section>
   );
 }
 
@@ -40,8 +45,8 @@ function ToDoSearch(){
   return <p>ToDoSearch</p>;
 }
 
-function ToDoItem(){
-  return ;
+function ToDoItem({state}){
+  return <p>ToDoItem: { state }</p>;
 }
 // function App() {
 //   return (
@@ -49,6 +54,6 @@ function ToDoItem(){
 //       <AppUI/>
 //     </ToDoProvider>
 //   );
-}
+// }
 
 export default App;
