@@ -11,13 +11,11 @@ function ToDoForm({ addToDo, setOpenModal }){
 
     const onChange = (event) => {
         setNewToDoValue(event.target.value);
-        console.log("A ver que pedo");
         console.log(event.target.value);
     };
 
     const onSubmit = (event) => {
         event.preventDefault();
-        console.log("Solo en submit");
         console.log(newToDoValue);
         addToDo(newToDoValue);
         setOpenModal(false);
