@@ -40,22 +40,41 @@ return(
         setSearchValue = { setSearchValue }
       />
     </ToDoHeader>
-  
-      <ToDoList>
-          {error && <ToDosError error={error}/>}
-          {loading && <ToDosLoading/>}
-          {(!loading && !searchedToDos.length) && <EmptyToDos/>}
 
-          {searchedToDos.map(toDo => (
-          <ToDoItem 
-              key={toDo.text} 
-              text={toDo.text} 
-              completed={toDo.completed} 
-              onComplete={() => completeToDo(toDo.text)}
-              onDelete={() => deleteToDo(toDo.text)}
-              />
-          ))} 
-      </ToDoList>
+    <ToDoList 
+      error={ error }
+      loading = { loading }
+      searchedToDos = { searchedToDos }
+      onError={() => <ToDosError/>}
+      onLoading={() => <ToDosLoading/>}
+      onEmptyToDos={() => <EmptyToDos/>}
+      render={toDo => (
+        <ToDoItem
+          key={toDo.text} 
+          text={toDo.text} 
+          completed={toDo.completed} 
+          onComplete={() => completeToDo(toDo.text)}
+          onDelete={() => deleteToDo(toDo.text)}
+        />
+      )}
+    />
+
+    {/* <ToDoList>
+      {error && <ToDosError error={error}/>}
+      {loading && <ToDosLoading/>}
+      {(!loading && !searchedToDos.length) && <EmptyToDos/>}
+
+      {searchedToDos.map(toDo => (
+      <ToDoItem 
+          key={toDo.text} 
+          text={toDo.text} 
+          completed={toDo.completed} 
+          onComplete={() => completeToDo(toDo.text)}
+          onDelete={() => deleteToDo(toDo.text)}
+          />
+      ))} 
+    </ToDoList> */}
+
       {!!openModal && (
         <Modal>
           <ToDoForm 
