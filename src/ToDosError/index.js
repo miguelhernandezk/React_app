@@ -1,5 +1,5 @@
 import React from "react";
-import { FaPlusCircle, FaSadCry } from "react-icons/fa";
+import { FaSadCry } from "react-icons/fa";
 import "./ToDosError.css"
 
 function ToDosError({error}){

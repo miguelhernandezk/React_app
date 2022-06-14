@@ -1,16 +1,7 @@
 import React from "react";
 import "./ToDoCounter.css";
-import  { ToDoContext } from "../ToDoContext"
-import { FaAccusoft } from "react-icons/fa";
 
-// const estilos = {
-//     color: "red",
-//     backgroundColor: "yellow",
-
-// };
-
-function ToDoCounter(){
-    const { totalToDos, completedToDos } = React.useContext(ToDoContext);
+function ToDoCounter({ totalToDos, completedToDos }){
     return(
         <React.Fragment>
             <h2 className="ToDoCounter headCounter">Your tasks</h2>
