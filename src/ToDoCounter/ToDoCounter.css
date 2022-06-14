@@ -16,3 +16,7 @@
     margin-bottom: 16px;
     color: #ED7448;
 }
+
+.ToDoCounter--loading{
+    opacity: 25%;
+}

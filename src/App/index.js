@@ -30,7 +30,7 @@ function App() {
 } = useToDos();
 return(
   <React.Fragment>
-    <ToDoHeader>
+    <ToDoHeader loading={loading}>
       <ToDoCounter
         totalToDos = { totalToDos }
         completedToDos = { completedToDos }

@@ -1,7 +1,7 @@
 import React from "react";
 import "./ToDoSearch.css";
 
-function ToDoSearch({ searchValue, setSearchValue }){
+function ToDoSearch({ searchValue, setSearchValue, loading }){
     const onSearchValueChange = (event) => {
         console.log(event.target.value);
         setSearchValue(event.target.value);
@@ -11,7 +11,10 @@ function ToDoSearch({ searchValue, setSearchValue }){
             className="ToDoSearch"
             placeholder="Filter ToDo's" 
             value={searchValue} 
-            onChange={onSearchValueChange}/>
+            onChange={onSearchValueChange}
+            disabled = {loading}
+        />
+            
     );
 }
 

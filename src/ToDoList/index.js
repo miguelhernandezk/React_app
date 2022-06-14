@@ -12,10 +12,6 @@ function ToDoList(props){
             {(!!props.totalToDos && !props.searchedToDos.length) && props.onEmptySearchResults(props.searchText)}
 
             {props.searchedToDos.map(renderFunc)}
-
-            <ul>
-            {props.children}
-            </ul>
         </section>
     );
 }
