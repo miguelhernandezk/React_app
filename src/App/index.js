@@ -41,13 +41,17 @@ return(
       />
     </ToDoHeader>
 
+    {/* Render props pattern
     <ToDoList 
       error={ error }
       loading = { loading }
       searchedToDos = { searchedToDos }
+      searchText = { searchValue }
+      totalToDos = {totalToDos}
       onError={() => <ToDosError/>}
       onLoading={() => <ToDosLoading/>}
       onEmptyToDos={() => <EmptyToDos/>}
+      onEmptySearchResults={(searchText) => <p>No hay resultados para {searchText}</p>}
       render={toDo => (
         <ToDoItem
           key={toDo.text} 
@@ -57,9 +61,32 @@ return(
           onDelete={() => deleteToDo(toDo.text)}
         />
       )}
-    />
+    /> */}
 
-    {/* <ToDoList>
+    <ToDoList
+      error={ error }
+      loading = { loading }
+      searchedToDos = { searchedToDos }
+      searchText = { searchValue }
+      totalToDos = {totalToDos}
+      onError={() => <ToDosError/>}
+      onLoading={() => <ToDosLoading/>}
+      onEmptyToDos={() => <EmptyToDos/>}
+      onEmptySearchResults={(searchText) => <p>No hay resultados para {searchText}</p>}
+    >
+      {toDo => (
+        <ToDoItem
+          key={toDo.text} 
+          text={toDo.text} 
+          completed={toDo.completed} 
+          onComplete={() => completeToDo(toDo.text)}
+          onDelete={() => deleteToDo(toDo.text)}
+        />
+      )}
+    </ToDoList>
+
+    {/* Original pattern:
+    <ToDoList>
       {error && <ToDosError error={error}/>}
       {loading && <ToDosLoading/>}
       {(!loading && !searchedToDos.length) && <EmptyToDos/>}
