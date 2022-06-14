@@ -1,0 +1,14 @@
+.EmptyToDos{
+    display: flex;
+    flex-direction: column;
+}
+
+.emptyIcon{
+    margin-top: 24px;
+    font-size: 100px;
+    text-align: center;
+}
+
+.miniAddButton{
+    color: #61DAFA;
+}

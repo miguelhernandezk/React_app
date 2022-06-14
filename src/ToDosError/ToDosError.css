@@ -1,0 +1,10 @@
+.ToDosError{
+    display: flex;
+    flex-direction: column;
+}
+
+.errorIcon{
+    margin-top: 24px;
+    font-size: 100px;
+    text-align: center;
+}
