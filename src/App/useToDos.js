@@ -4,7 +4,13 @@ import {useLocalStorage} from "./useLocalStorage.js"
 
 function useToDos(){
     const [openModal, setOpenModal] = React.useState(false);
-    const {item: toDos, saveItem: saveToDos, loading, error} = useLocalStorage("TODOS_V1", []);
+    const {
+        item: toDos,
+        saveItem: saveToDos,
+        synchronizeItem: synchronizeToDos,
+        loading, 
+        error
+    } = useLocalStorage("TODOS_V1", []);
     const [searchValue, setSearchValue] = React.useState("");
     const [toDoStatus, setToDoStatus] = React.useState(false);
 
@@ -63,7 +69,8 @@ function useToDos(){
             deleteToDo,
             addToDo,
             openModal,
-            setOpenModal
+            setOpenModal,
+            synchronizeToDos,
         }
     );
 }

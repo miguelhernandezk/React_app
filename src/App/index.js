@@ -11,6 +11,7 @@ import { ToDosError } from "../ToDosError";
 import { ToDosLoading } from "../ToDosLoading";
 import { EmptyToDos } from "../EmptyToDos";
 import { ToDoHeader } from "../ToDoHeader";
+import { ChangeAlertWithStorageListener } from "../ChangeAlert";
 
 // import './App.css';
 
@@ -27,6 +28,7 @@ function App() {
     searchValue, 
     setSearchValue,
     addToDo, 
+    synchronizeToDos,
 } = useToDos();
 return(
   <React.Fragment>
@@ -40,28 +42,6 @@ return(
         setSearchValue = { setSearchValue }
       />
     </ToDoHeader>
-
-    {/* Render props pattern
-    <ToDoList 
-      error={ error }
-      loading = { loading }
-      searchedToDos = { searchedToDos }
-      searchText = { searchValue }
-      totalToDos = {totalToDos}
-      onError={() => <ToDosError/>}
-      onLoading={() => <ToDosLoading/>}
-      onEmptyToDos={() => <EmptyToDos/>}
-      onEmptySearchResults={(searchText) => <p>No hay resultados para {searchText}</p>}
-      render={toDo => (
-        <ToDoItem
-          key={toDo.text} 
-          text={toDo.text} 
-          completed={toDo.completed} 
-          onComplete={() => completeToDo(toDo.text)}
-          onDelete={() => deleteToDo(toDo.text)}
-        />
-      )}
-    /> */}
 
     <ToDoList
       error={ error }
@@ -85,23 +65,6 @@ return(
       )}
     </ToDoList>
 
-    {/* Original pattern:
-    <ToDoList>
-      {error && <ToDosError error={error}/>}
-      {loading && <ToDosLoading/>}
-      {(!loading && !searchedToDos.length) && <EmptyToDos/>}
-
-      {searchedToDos.map(toDo => (
-      <ToDoItem 
-          key={toDo.text} 
-          text={toDo.text} 
-          completed={toDo.completed} 
-          onComplete={() => completeToDo(toDo.text)}
-          onDelete={() => deleteToDo(toDo.text)}
-          />
-      ))} 
-    </ToDoList> */}
-
       {!!openModal && (
         <Modal>
           <ToDoForm 
@@ -113,6 +76,10 @@ return(
     <CreateToDoButton
       setOpenModal={setOpenModal}
     />
+    <ChangeAlertWithStorageListener
+      synchronize = { synchronizeToDos }
+    />
+
   </React.Fragment>
   );
 }
