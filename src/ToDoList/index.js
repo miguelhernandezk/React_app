@@ -11,7 +11,7 @@ function ToDoList(props){
 
             {(!!props.totalToDos && !props.searchedToDos.length) && props.onEmptySearchResults(props.searchText)}
 
-            {props.searchedToDos.map(renderFunc)}
+            {(!props.loading && !props.error) && props.searchedToDos.map(renderFunc)}
         </section>
     );
 }
